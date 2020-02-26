@@ -11,7 +11,7 @@ CREATE INDEX ON planet_osm_line USING gist (way)
 --      maxzoom: 11
 CREATE INDEX ON planet_osm_line USING gist (way)
           WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
-            AND (bridge IS NULL OR bridge NOT IN ('yes', 'aqueduct');
+            AND (bridge IS NULL OR bridge NOT IN ('yes', 'aqueduct'));
 
 --      minzoom: 12
 CREATE INDEX ON planet_osm_polygon USING gist (way)
