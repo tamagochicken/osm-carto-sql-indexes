@@ -56,16 +56,22 @@ CREATE INDEX ON planet_osm_polygon USING gist (way)
           WHERE tourism = 'theme_park'
             OR tourism = 'zoo' ;
 --      minzoom: 10
-CREATE INDEX ON planet_osm_line USING gist (way)
+CREATE INDEX ON planet_osm_line USING gist (way) -- v4.24.1 && v4.25.0
             WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
                   'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
               OR historic = 'citywalls'
               AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'stream', 'drain', 'ditch'));
---      minzoom: 14
+--      minzoom: 14              
+CREATE INDEX ON planet_osm_polygon USING gist (way) -- v4.25.0
+            WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
+              OR historic = 'citywalls'
+              AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'stream', 'drain', 'ditch'));
+--      minzoom: 15
 CREATE INDEX ON planet_osm_line USING GIST(way)
           WHERE "natural" = 'cliff' OR man_made = 'embankment';
 --      minzoom: 13
-CREATE INDEX ON planet_osm_polygon USING GIST(way)
+CREATE INDEX ON planet_osm_polygon USING GIST(way) -- v4.24.1 only
             WHERE (barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
                   'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
               OR historic = 'citywalls')

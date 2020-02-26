@@ -16,7 +16,7 @@ func main() {
 
 	// read template
 	scanner := bufio.NewScanner(os.Stdin)
-	lines := make([]string, 100)
+	lines := make([]string, 0)
 	for scanner.Scan() {
 		lines = append(lines, scanner.Text())
 	}
