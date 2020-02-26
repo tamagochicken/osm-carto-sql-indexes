@@ -52,7 +52,7 @@ func main() {
 	}
 
 	// stdout
-	for zoom := 6; zoom <= minzoom; zoom++ {
+	for zoom := maxzoom; zoom <= minzoom; zoom++ {
 		pixelWH := strconv.Itoa(int(z10pixelWH * math.Pow(2, 10-float64(zoom))))
 		for _, line := range lines {
 			newline := strings.ReplaceAll(line, "!pixel_width!", pixelWH)
