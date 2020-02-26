@@ -26,17 +26,29 @@ func main() {
 	}
 
 	// calc endzoom
-	arg1 := os.Args[1:]
-	var minzoom int
-	if len(arg1) > 0 {
+	args := os.Args[1:]
+	var minzoom, maxzoom int
+	if len(args) > 0 {
 		var err error
-		minzoom, err = strconv.Atoi(arg1[0])
+		minzoom, err = strconv.Atoi(args[0])
 		if err != nil {
-			fmt.Fprintln(os.Stderr, "error parsing number:", err)
+			fmt.Fprintln(os.Stderr, "error parsing number for minzoom:", err)
 			os.Exit(1)
 		}
+		if len(args) > 1 {
+			var err error
+			maxzoom, err = strconv.Atoi(args[1])
+			if err != nil {
+				fmt.Fprintln(os.Stderr, "error parsing number for maxzoom:", err)
+				os.Exit(1)
+			}
+		} else {
+			maxzoom = 6
+		}
+
 	} else {
 		minzoom = 12
+		maxzoom = 6
 	}
 
 	// stdout

@@ -42,16 +42,14 @@ CREATE INDEX ON planet_osm_polygon USING GIST(way)
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real ;
 --      minzoom: 8
 CREATE INDEX ON planet_osm_polygon USING GIST(way)
-          WHERE way && !bbox!
-            AND boundary = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level = '2'
             AND name IS NOT NULL
             AND way_area > 100*!pixel_width!::real*!pixel_height!::real
             AND osm_id < 0 ;
 --      minzoom: 2
 CREATE INDEX ON planet_osm_polygon USING GIST(way)
-          WHERE way && !bbox!
-            AND boundary = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level = '4'
             AND name IS NOT NULL
             AND way_area > 100*!pixel_width!::real*!pixel_height!::real
