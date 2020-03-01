@@ -55,3 +55,8 @@ CREATE INDEX ON planet_osm_polygon USING GIST(way)
             AND way_area > 100*!pixel_width!::real*!pixel_height!::real
             AND osm_id < 0 ;
 --      minzoom: 4
+CREATE INDEX ON planet_osm_polygon USING gist (way)
+          WHERE building IS NOT NULL
+            AND building != 'no'
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real ;
+--      minzoom: 14

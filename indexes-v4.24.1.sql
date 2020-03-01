@@ -35,11 +35,6 @@ CREATE INDEX ON planet_osm_point USING gist (way)
 CREATE INDEX ON planet_osm_polygon USING gist (way)
           WHERE man_made = 'bridge' ;
 --      minzoom: 12
-CREATE INDEX ON planet_osm_polygon USING gist (way)
-          WHERE building IS NOT NULL
-            AND building != 'no'
-            AND way_area > 1*!pixel_width!::real*!pixel_height!::real ;
---      minzoom: 14
 CREATE INDEX ON planet_osm_line USING gist (way)
               WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
                 AND highway IS NOT NULL ; -- end of road select
