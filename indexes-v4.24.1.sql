@@ -132,7 +132,7 @@ CREATE INDEX ON planet_osm_line USING GIST(way)
 CREATE INDEX ON planet_osm_point USING GIST(way)
           WHERE (tags->'entrance') IS NOT NULL AND
             (tags->'indoor' = 'no'
-            OR (tags->'indoor') IS NULL)) ;
+            OR (tags->'indoor') IS NULL) ;
 --      minzoom: 18
 CREATE INDEX ON planet_osm_line USING GIST(way)
           WHERE aeroway IN ('runway', 'taxiway');

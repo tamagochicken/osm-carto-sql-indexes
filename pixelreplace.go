@@ -47,7 +47,7 @@ func main() {
 		}
 
 	} else {
-		minzoom = 12
+		minzoom = 17
 		maxzoom = 6
 	}
 
