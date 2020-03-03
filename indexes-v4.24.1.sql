@@ -325,3 +325,9 @@ CREATE INDEX ON planet_osm_point USING GIST(way)
                OR man_made IN ('cross')
                OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate');
 --      minzoom: 14
+CREATE INDEX ON planet_osm_point USING GIST(way)
+          WHERE "natural" IN ('spring') ;
+--      minzoom: 14
+CREATE INDEX ON planet_osm_polygon USING GIST(way)
+          WHERE "natural" IN ('spring') ;
+--      minzoom: 14
