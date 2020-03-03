@@ -47,17 +47,21 @@ func main() {
 		}
 
 	} else {
-		minzoom = 17
-		maxzoom = 6
+		minzoom = 30
+		maxzoom = 0
 	}
 
 	// stdout
 	for zoom := maxzoom; zoom <= minzoom; zoom++ {
-		pixelWH := strconv.Itoa(int(z10pixelWH * math.Pow(2, 10-float64(zoom))))
+		pixelWHnumber := z10pixelWH * math.Pow(2, 10-float64(zoom))
+		pixelWH := strconv.Itoa(int(pixelWHnumber))
 		for _, line := range lines {
 			newline := strings.ReplaceAll(line, "!pixel_width!", pixelWH)
 			newline = strings.ReplaceAll(newline, "!pixel_height!", pixelWH)
 			fmt.Println(newline)
+		}
+		if pixelWHnumber == 0 {
+			break
 		}
 	}
 }
